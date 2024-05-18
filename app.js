@@ -165,7 +165,7 @@ const square = {
                 this.top_side_x2 = this.start_x;
                 this.top_side_y2 = this.start_y;
 
-                this.circle_colour = this.right_side_colour;
+                this.circle_colour = this.top_side_colour;
                 this.text_colour = this.top_side_colour
 
                 start_time = Date.now();
