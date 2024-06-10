@@ -1,4 +1,4 @@
-// version 1.0
+// version 1.1
 const main_canvas = document.getElementById("mainCanvas");
 const ctx = main_canvas.getContext("2d");
 
@@ -6,6 +6,7 @@ main_canvas.width = Math.floor(window.innerWidth);
 // add room for page title and button
 main_canvas.height = Math.floor(window.innerHeight) - 150;
 
+is_light_bg = false;
 is_running = false;
 start_time = Date.now();
 
@@ -38,7 +39,7 @@ const square = {
     ls_colour: "rgb(167, 221, 221)",
 
     text_colour: "rgb(241, 186, 141)",
-    background_colour: "rgb(255, 255, 255)",
+    background_colour: "#222222",
     circle_colour: this.ts_colour,
 
     direction: -1,
@@ -83,7 +84,7 @@ const square = {
             // draw a line from the edge
             ctx.beginPath();
             ctx.strokeStyle = this.background_colour;
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 1;
             ctx.moveTo(0, 5);
             ctx.lineTo(this.increments, 5);
             ctx.stroke();
@@ -292,6 +293,20 @@ function startStopButtonClicked() {
         requestAnimationFrame(runProcess);
     } else {
         btn.innerHTML = "Start";
+    }
+}
+
+function colourButtonClicked() {
+    let btn = document.getElementById('dark-light-button');
+    is_light_bg = !is_light_bg;
+    if (is_light_bg) {
+        btn.innerHTML = "Dark";
+        document.body.style.backgroundColor = "#F3FAFD";
+        square.background_colour = "#F3FAFD";
+    } else {
+        btn.innerHTML = "Light";
+        document.body.style.backgroundColor = "#222222";
+        square.background_colour = "#222222";
     }
 }
 
